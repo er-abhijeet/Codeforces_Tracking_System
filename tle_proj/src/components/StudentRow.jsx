@@ -10,7 +10,7 @@ const StudentRow = ({ student, onView, onDelete, lastTime }) => {
       <td className="p-2 ">
         <img src={student.avatar} alt="avatar" className="h-10 w-10 rounded-full" />
       </td>
-      <td onClick={()=>navigate(`/student/${student.cf_handle}`)} className="p-2">{student.cf_name}</td>
+      <td onClick={()=>navigate(`/student/${student.cf_handle}`)} className="hover:cursor-pointer p-2">{student.cf_name}</td>
       <td className="p-2">{student.nickname}</td>
       <td className={`p-2 text-black`}>{student.cf_handle}</td>
       <td onClick={()=>navigate(`/email/${student.cf_handle}`)} className={`p-2 text-black`}>{student.email}</td>
@@ -21,7 +21,13 @@ const StudentRow = ({ student, onView, onDelete, lastTime }) => {
         <button onClick={() => onView(student)}><Eye size={18} /></button>
         <button onClick={() => onDelete(student.id)}><Trash2 size={18} /></button>
       </td>
-      <td className={`p-2 text-black`}>{ new Date(lastTime[student.cf_handle]).toLocaleString()}</td>
+<td className="p-2 text-black">
+  {
+    isNaN(new Date(lastTime[student.cf_handle]).getTime())
+      ? "Not updated"
+      : new Date(lastTime[student.cf_handle]).toLocaleString()
+  }
+</td>
 
     </tr>
   );

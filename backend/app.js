@@ -82,7 +82,7 @@ const updateAll = async (handle) =>{
             const resp1=await fetch(`http://localhost:3000/addNewUserContests?user=${user}`);
             const resp2=await fetch(`http://localhost:3000/addProblemData?user=${user}`);
             const res9=await pool.query(
-            `INSERT INTO last_updated (handle, updated_at)
+            `INSERT INTO last_updated (handle, updated_at) 
             VALUES ($1, NOW())
             ON CONFLICT (handle)
             DO UPDATE SET updated_at = EXCLUDED.updated_at`,
@@ -302,7 +302,7 @@ app.get("/addProblemData", async (req, res) => {
 
     const submissions = data.result.filter(sub => sub.verdict === "OK");
     for (const sub of submissions) {
-      const {
+      const { 
         contestId,
         problem: { index, name, rating },
         programmingLanguage,
