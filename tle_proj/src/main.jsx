@@ -8,6 +8,7 @@ import UserContestDetails from './components/UserContestDetails.jsx'
 import UserContextProvider from './context/UserContextProvider'
 import CronScheduler from './components/CronScheduler.jsx'
 import EmailReminderSettings from './components/EmailReminderSettings.jsx'
+import ThemeToggle from './components/Themetoggle.jsx'
 
 
 

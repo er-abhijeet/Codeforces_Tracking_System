@@ -72,11 +72,11 @@ const updateAll = async (handle) =>{
         let data=await fetch("http://localhost:3000/all");
         data=await data.json()
         data=data.users;
-        users=data.map((e)=>e.cf_handle);
-    }
+        users=data.map((e)=>e.cf_handle); 
+    } 
     console.log(" Triggering scheduled Codeforces data sync for " ,users);
     // return;
-    try{
+    try{ 
         users.forEach(async (user) => {
             const resp=await fetch(`http://localhost:3000/addRatingHistory?user=${user}`);
             const resp1=await fetch(`http://localhost:3000/addNewUserContests?user=${user}`);
@@ -454,7 +454,7 @@ function scheduleCronJob(cronExpression) {
 
   currentTask = cron.schedule(cronExpression, async () => {
     console.log("⏰ Cron job triggered at", new Date().toLocaleString());
-    // Call your /fetch-and-store logic here
+    // Call your /fetch-and-store logic here 
     const ans=await updateAll();
     await sendInactivityReminders();  
   });
